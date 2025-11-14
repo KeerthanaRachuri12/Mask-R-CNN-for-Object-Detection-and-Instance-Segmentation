@@ -93,9 +93,9 @@ This approach allows simultaneous object detection and pixel-level segmentation 
 - Download Pascal VOC 2012 dataset using kaggle API and unzip it.
 - Two Dataset folders will be with structure:
   
-VOC2012_Train_Val
-└── VOC2012_Train_Val
-├── JPEGImages/ # Raw image files (*.jpg)
+VOC2012_Train_Val  <br />
+└── VOC2012_Train_Val <br />
+├── JPEGImages/ # Raw image files (*.jpg) <br />
 │ ├── 000001.jpg
 │ ├── 000002.jpg
 │ └── ...
