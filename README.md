@@ -24,6 +24,56 @@ Mask R-CNN operates in three main stages:
 This approach allows simultaneous object detection and pixel-level segmentation with high accuracy.
 
 ---
+## Machine Learning Concepts Utilized in This Mask R-CNN Project
+
+This project leverages several key machine learning and deep learning concepts that are integral to the Mask R-CNN architecture and training pipeline:
+
+### 1. Convolutional Neural Networks (CNNs)
+- Uses a deep CNN backbone (ResNet-50) with Feature Pyramid Networks (FPN) to extract rich multiscale feature representations from input images.
+- CNNs automatically learn hierarchical features such as edges, textures, and object parts useful for detection and segmentation.
+
+### 2. Region Proposal Network (RPN)
+- Generates candidate object regions (bounding box proposals) from the backbone’s feature maps.
+- Learns to propose regions likely to contain objects, reducing search space and improving efficiency versus sliding-window methods.
+
+### 3. Two-Stage Detection Framework
+- First stage: Propose regions via RPN.
+- Second stage: Extract fixed-size features from proposed regions using RoIAlign, then:
+  - Classify objects in each region.
+  - Refine bounding box coordinates.
+  - Predict segmentation mask for each object.
+
+### 4. RoIAlign Layer
+- Corrects spatial misalignments caused by quantization in previous RoI pooling.
+- Uses bilinear interpolation to precisely extract fixed-size feature maps preserving spatial correspondence for each proposal.
+- Improves mask quality especially for small objects.
+
+### 5. Instance Segmentation via Mask Head
+- A parallel branch to classification and bounding box regression predicts pixel-wise binary masks for each detected object.
+- The mask head uses convolutional and upsampling layers to create high-resolution masks delineating object boundaries.
+
+### 6. Multi-task Loss Optimization
+- Combines multiple loss components during training:
+  - Classification loss (cross-entropy) for detecting object classes.
+  - Bounding box regression loss (smooth L1) for precise localization.
+  - Mask segmentation loss (binary cross entropy) for mask accuracy.
+- The network optimizes all these losses jointly for end-to-end learning.
+
+### 7. Transfer Learning and Fine-tuning
+- Starts with a model pretrained on COCO dataset.
+- Replaces classification and mask heads to fit Pascal VOC classes.
+- Fine-tunes entire network on Pascal VOC data for better specialization while leveraging learned features.
+
+### 8. Data Augmentation & Dataset Splitting
+- Uses train/val splits provided by VOC dataset.
+- Uses data transformations (resizing, normalization) in data loaders.
+- These augmentations improve generalization and robustness.
+
+### 9. Batch Processing and GPU Acceleration
+- Efficient batch loading with PyTorch `DataLoader`.
+- Training and inference performed on GPU (if available) for performance.
+
+---
 
 ## File Structure
 
