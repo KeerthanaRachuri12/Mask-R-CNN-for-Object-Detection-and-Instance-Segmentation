@@ -93,8 +93,8 @@ This approach allows simultaneous object detection and pixel-level segmentation 
 - Download Pascal VOC 2012 dataset using kaggle API and unzip it.
 - Two Dataset folders will be with structure:
   
-VOC2012_Train_Val <br />  
-└── VOC2012_Train_Val <br />  
+VOC2012_Train_Val /Test <br />  
+└── VOC2012_Train_Val/Test <br />  
 ├── JPEGImages/ # Raw image files (*.jpg) <br />  
 │ ├── 000001.jpg <br />  
 │ ├── 000002.jpg <br />  
@@ -114,27 +114,6 @@ VOC2012_Train_Val <br />
 │ ├── trainval.txt <br />  
 │ └── test.txt <br />  
 └── SegmentationObject/ # Instance-wise segmentation masks (optional in some versions) <br />  
-
-VOC2012_Test <br />  
-└── VOC2012_Test \ <br />  
-├── JPEGImages/ # Raw image files (*.jpg) <br />  
-│ ├── 000001.jpg <br />  
-│ ├── 000002.jpg <br />  
-│ └── ... <br />  
-├── Annotations/ # XML files with bounding box and class annotations <br />  
-│ ├── 000001.xml <br />  
-│ ├── 000002.xml <br />  
-│ └── ... <br />  
-├── SegmentationClass/ # Semantic segmentation ground truths (PNG format) <br />  
-│ ├── 000001.png <br />  
-│ ├── 000002.png <br />  
-│ └── ... <br />  
-├── ImageSets/ <br />  
-│ └── Main/ # Text files listing train/val/test splits <br />  
-│ ├── train.txt <br />  
-│ ├── val.txt <br />  
-│ ├── trainval.txt <br />  
-│ └── test.txt <
 
 - Update `root_folder` and file paths accordingly in code.
 
