@@ -92,6 +92,7 @@ This approach allows simultaneous object detection and pixel-level segmentation 
 
 - Download Pascal VOC 2012 dataset using kaggle API and unzip it.
 - Two Dataset folders will be with structure:
+  
 VOC2012_Train_Val
 └── VOC2012_Train_Val
 ├── JPEGImages/ # Raw image files (*.jpg)
@@ -115,7 +116,7 @@ VOC2012_Train_Val
 └── SegmentationObject/ # Instance-wise segmentation masks (optional in some versions)
 
 VOC2012_Test
-└── VOC2012_Test
+└── VOC2012_Test \
 ├── JPEGImages/ # Raw image files (*.jpg)
 │ ├── 000001.jpg
 │ ├── 000002.jpg
@@ -135,15 +136,6 @@ VOC2012_Test
 │ ├── trainval.txt
 │ └── test.txt
 └── SegmentationObject/ # Instance-wise segmentation masks (optional in some versions)
-- Update `root_folder` and file paths accordingly in code.
-
-### Training
-
-- Load model pretrained on COCO, replace heads for VOC classes.
-- Train with batch size 1-2 for 20-50 epochs.
-- Use provided training loop and optimizer setup.
-
-Example training loop snippet:
 
 - Update `root_folder` and file paths accordingly in code.
 
