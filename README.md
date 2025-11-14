@@ -86,10 +86,6 @@ This approach allows simultaneous object detection and pixel-level segmentation 
 - matplotlib
 - **Kaggle API** for downloading the dataset programmatically
 
-### Installing the Kaggle API
-
-You can install the official Kaggle API Python package via pip:
-
 ---
 ## Workflow
 ### Data Preparation
