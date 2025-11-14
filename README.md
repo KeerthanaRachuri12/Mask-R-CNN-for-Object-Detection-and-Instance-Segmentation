@@ -76,7 +76,93 @@ This approach allows simultaneous object detection and pixel-level segmentation 
 - Helps qualitatively verify the model's performance.
 
 ---
+## Dependencies
 
+- Python 3.7+
+- PyTorch 1.13+
+- torchvision 0.14+
+- PIL / Pillow
+- numpy
+- matplotlib
+- **Kaggle API** for downloading the dataset programmatically
+
+### Installing the Kaggle API
+
+You can install the official Kaggle API Python package via pip:
+
+---
+## Workflow
+### Data Preparation
+
+- Download Pascal VOC 2012 dataset using kaggle API and unzip it.
+- Two Dataset folders will be with structure:
+VOC2012_Train_Val
+└── VOC2012_Train_Val
+├── JPEGImages/ # Raw image files (*.jpg)
+│ ├── 000001.jpg
+│ ├── 000002.jpg
+│ └── ...
+├── Annotations/ # XML files with bounding box and class annotations
+│ ├── 000001.xml
+│ ├── 000002.xml
+│ └── ...
+├── SegmentationClass/ # Semantic segmentation ground truths (PNG format)
+│ ├── 000001.png
+│ ├── 000002.png
+│ └── ...
+├── ImageSets/
+│ └── Main/ # Text files listing train/val/test splits
+│ ├── train.txt
+│ ├── val.txt
+│ ├── trainval.txt
+│ └── test.txt
+└── SegmentationObject/ # Instance-wise segmentation masks (optional in some versions)
+
+VOC2012_Test
+└── VOC2012_Test
+├── JPEGImages/ # Raw image files (*.jpg)
+│ ├── 000001.jpg
+│ ├── 000002.jpg
+│ └── ...
+├── Annotations/ # XML files with bounding box and class annotations
+│ ├── 000001.xml
+│ ├── 000002.xml
+│ └── ...
+├── SegmentationClass/ # Semantic segmentation ground truths (PNG format)
+│ ├── 000001.png
+│ ├── 000002.png
+│ └── ...
+├── ImageSets/
+│ └── Main/ # Text files listing train/val/test splits
+│ ├── train.txt
+│ ├── val.txt
+│ ├── trainval.txt
+│ └── test.txt
+└── SegmentationObject/ # Instance-wise segmentation masks (optional in some versions)
+- Update `root_folder` and file paths accordingly in code.
+
+### Training
+
+- Load model pretrained on COCO, replace heads for VOC classes.
+- Train with batch size 1-2 for 20-50 epochs.
+- Use provided training loop and optimizer setup.
+
+Example training loop snippet:
+
+- Update `root_folder` and file paths accordingly in code.
+
+### Training
+
+- Load model pretrained on COCO, replace heads for VOC classes.
+- Train with batch size 1-2 for 20-50 epochs.
+- Use provided training loop and optimizer setup.
+
+### Evaluation
+
+- Run model on validation/test data in evaluation mode.
+- Generate predictions and visualize overlayed masks, bounding boxes, and labels.
+
+---
 ## References
 
 - [Torchvision Mask R-CNN](https://pytorch.org/vision/stable/models.html#mask-rcnn)
